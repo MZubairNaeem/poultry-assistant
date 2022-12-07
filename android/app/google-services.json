@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "919702107545",
+    "project_id": "poultry-assistant-de583",
+    "storage_bucket": "poultry-assistant-de583.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919702107545:android:f594154c7c9f7487ce8f08",
+        "android_client_info": {
+          "package_name": "com.example.poultry_assistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919702107545-f8ga0fskona85e96iqq88u7658m0hf0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxSY89iTiOzB_b4fYSzheJv5GWkOeNwrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919702107545-f8ga0fskona85e96iqq88u7658m0hf0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
