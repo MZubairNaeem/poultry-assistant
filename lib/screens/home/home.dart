@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:poultry_assistant/screens/home/dashboard.dart';
-import 'package:poultry_assistant/screens/home/profile.dart';
-import 'package:poultry_assistant/screens/home/settings.dart';
-
+import 'package:poultry_assistant/screens/home/navigation/settings.dart';
 import '../credentials/login.dart';
+import 'navigation/dashboard.dart';
+import 'navigation/profile.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
