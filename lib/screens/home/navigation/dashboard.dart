@@ -4,6 +4,7 @@ import 'package:poultry_assistant/screens/home/cards/schedule_management.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../cards/coming_schedule.dart';
+import '../cards/in_progress.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -90,7 +91,7 @@ class _DashboardState extends State<Dashboard> {
             //breed
             GestureDetector(
               onTap: (){
-
+                launchUrlStart(url: "https://starmilling.com/poultry-chicken-breeds/");
               },
               child: Card(
                 color: Colors.blueGrey.shade300,
@@ -116,7 +117,7 @@ class _DashboardState extends State<Dashboard> {
             //disease
             GestureDetector(
               onTap: (){
-
+                launchUrlStart(url: "https://edis.ifas.ufl.edu/publication/PS044");
               },
               child: Card(
                 color: Colors.green.shade200,
@@ -142,7 +143,7 @@ class _DashboardState extends State<Dashboard> {
             //daily care
             GestureDetector(
               onTap: (){
-
+                launchUrlStart(url: "https://www.growelagrovet.com/poultry-medicine-chart/amp/");
               },
               child: Card(
                 color: Colors.blue.shade200,
@@ -168,7 +169,10 @@ class _DashboardState extends State<Dashboard> {
             //in progress
             GestureDetector(
               onTap: (){
-
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const InProgress()));
               },
               child: Card(
                 color: Colors.red.shade200,
