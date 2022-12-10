@@ -188,7 +188,7 @@ class _DashboardState extends State<Dashboard> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text('In Progress',style: TextStyle(color: Colors.grey.shade800,fontSize: 16,fontWeight: FontWeight.bold),)
+                    Text('Disease Identification',style: TextStyle(color: Colors.grey.shade800,fontSize: 16,fontWeight: FontWeight.bold),)
                   ],
                 ),
 
