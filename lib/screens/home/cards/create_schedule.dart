@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:poultry_assistant/screens/ui_logic/show_snack_bar.dart';
 
 import '../../resourse/firestore_method.dart';
 
@@ -28,10 +29,14 @@ class _CreateScheduleState extends State<CreateSchedule> {
     super.dispose();
   }
 
-
-  void postImage(String uid) async {
+  @override
+  void initState() {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    super.initState();
+  }
+  void uploadSchedule(String uid) async {
     try {
-      String res = await FirestoreMethods().uploadPost(
+      String res = await FirestoreMethods().uploadSchedule(
           uid,
           _folkCountController.text,
           _breedNameController.text,
@@ -39,12 +44,12 @@ class _CreateScheduleState extends State<CreateSchedule> {
           _dateController.text,
           _nextDateController.text);
       if (res == "success") {
-        print('done');
+        showSnackBar("Schedule Uplaoded", context);
       } else {
 
       }
     } catch (e) {
-      print(e.toString());
+      showSnackBar(e.toString(), context);
     }
   }
 
@@ -96,6 +101,7 @@ class _CreateScheduleState extends State<CreateSchedule> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     autofocus: false,
                     decoration: const InputDecoration(
                       labelText: 'Folk Number',
@@ -231,8 +237,9 @@ class _CreateScheduleState extends State<CreateSchedule> {
 
                 //submit button
                 GestureDetector(
-                  onTap: () {
-
+                  onTap: () async {
+                    final uid = FirebaseAuth.instance.currentUser!.uid;
+                    uploadSchedule(uid);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),

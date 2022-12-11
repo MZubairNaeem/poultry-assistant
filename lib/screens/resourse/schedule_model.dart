@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Post{
+class Schedule{
   final String uid;
   final String folkNumber;
   final String breedName;
@@ -8,7 +8,7 @@ class Post{
   final dateVaccination;
   final nextDateVaccination;
 
-  const Post({
+  const Schedule({
     required this.uid,
     required this.folkNumber,
     required this.breedName,
@@ -26,9 +26,9 @@ class Post{
     "nextDateVaccination":nextDateVaccination,
   };
 
-  static Post fromSnap(DocumentSnapshot snap){
+  static Schedule fromSnap(DocumentSnapshot snap){
     var snapshot = snap.data() as Map<String,dynamic>;
-    return Post(
+    return Schedule(
       uid: snapshot['uid'],
       folkNumber: snapshot['folkNumber'],
       breedName: snapshot['breedName'],

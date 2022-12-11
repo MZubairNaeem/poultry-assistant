@@ -4,6 +4,7 @@ import 'package:poultry_assistant/screens/home/cards/schedule_management.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../cards/coming_schedule.dart';
+import '../cards/create_schedule.dart';
 import '../cards/in_progress.dart';
 
 class Dashboard extends StatefulWidget {
@@ -37,7 +38,7 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ScheduleManagement()));
+                        builder: (context) => const CreateSchedule()));
               },
               child: Card(
                 color: Colors.deepPurple.shade200,
@@ -65,7 +66,7 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  const ComingSchedule()));
+                        builder: (context) =>   const ComingSchedule()));
               },
               child: Card(
                 color: Colors.orange.shade300,
