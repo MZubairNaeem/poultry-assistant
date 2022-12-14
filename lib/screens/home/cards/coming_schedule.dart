@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,14 @@ class _ComingScheduleState extends State<ComingSchedule> {
   //   getDocID();
   //   super.initState();
   // }
+  final CollectionReference _products =
+  FirebaseFirestore.instance.collection('Schedule');
+  Future<void> _delete(String productId) async {
+    await _products.doc(productId).delete();
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('You have successfully deleted a product')));
+  }
 
   @override
   Widget build(BuildContext context) {

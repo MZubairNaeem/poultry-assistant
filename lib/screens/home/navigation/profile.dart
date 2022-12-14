@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
               ),
               user!.emailVerified
                   ? const Text(
-                ' Verified',
+                'Verified',
                 style: TextStyle(fontSize: 18.0, color: Colors.deepPurple,fontWeight: FontWeight.bold),
               )
                   : TextButton(
