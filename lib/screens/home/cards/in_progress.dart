@@ -38,7 +38,7 @@ class _InProgressState extends State<InProgress> {
                 child: Row(
                   children: const [
                     Icon(Icons.add_a_photo),
-                    SizedBox(width: 10),
+                    SizedBox(width: 11),
                     Text(
                       'Camera',
                       style: TextStyle(
@@ -118,7 +118,7 @@ class _InProgressState extends State<InProgress> {
           _isLoading = true;
         });
     try{
-      String url = "https://3e1e-119-160-64-102.ap.ngrok.io/insert";
+      String url = "https://d18b-119-160-64-197.ap.ngrok.io/insert";
       var request = http.MultipartRequest('POST', Uri.parse(url));
       request.files.add(http.MultipartFile('image_path', selectedImg!.readAsBytes().asStream(), selectedImg!.lengthSync(),),);
       var responce = await request.send();

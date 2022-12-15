@@ -37,6 +37,7 @@ class _ComingScheduleState extends State<ComingSchedule> {
   // }
   final CollectionReference _products =
   FirebaseFirestore.instance.collection('Schedule');
+
   Future<void> _delete(String productId) async {
     await _products.doc(productId).delete();
 

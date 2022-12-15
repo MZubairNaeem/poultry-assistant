@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:poultry_assistant/screens/home/cards/schedule_management.dart';
+import 'package:poultry_assistant/screens/home/cards/test/schedule_creation.dart';
+import 'package:poultry_assistant/screens/home/cards/test/show_schedule.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../cards/coming_schedule.dart';
@@ -38,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CreateSchedule()));
+                        builder: (context) => const ScheduleCreation()));
               },
               child: Card(
                 color: Colors.deepPurple.shade200,
@@ -66,7 +68,7 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>   const ComingSchedule()));
+                        builder: (context) =>   const ShowSchedule()));
               },
               child: Card(
                 color: Colors.orange.shade300,
