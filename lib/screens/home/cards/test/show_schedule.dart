@@ -44,6 +44,10 @@ class _ShowScheduleState extends State<ShowSchedule> {
                   final DocumentSnapshot documentSnapshot =
                   streamSnapshot.data!.docs[index];
                   return Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
+                    ),
                     elevation: 10,
                     color: Colors.grey.shade200,
                     margin: const EdgeInsets.all(10),
