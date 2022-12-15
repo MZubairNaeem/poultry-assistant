@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,6 +11,7 @@ class ScheduleCreation extends StatefulWidget {
 }
 
 class _ScheduleCreationState extends State<ScheduleCreation> {
+  final uid = FirebaseAuth.instance.currentUser!.uid;
 // text fields' controllers
   final TextEditingController _flockNameController = TextEditingController();
   final TextEditingController _breadNameController = TextEditingController();
@@ -44,7 +46,9 @@ class _ScheduleCreationState extends State<ScheduleCreation> {
   ];
 
   final CollectionReference _products =
-  FirebaseFirestore.instance.collection('products');
+  FirebaseFirestore.instance.collection('Schedule');
+  final email = FirebaseAuth.instance.currentUser!.email;
+
 
   Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
     await showModalBottomSheet(
@@ -232,6 +236,7 @@ class _ScheduleCreationState extends State<ScheduleCreation> {
 
                     if (FlockName != null) {
                       await _products.add({
+                        "user_email": email,
                         "Flock_Name": FlockName,
                         "BreadName": BreadName,
                         "VaccineName": VaccineName,
@@ -485,8 +490,11 @@ class _ScheduleCreationState extends State<ScheduleCreation> {
           title: const Text('Manage Schedule'),
           centerTitle: true,
         ),
-        body: StreamBuilder(
-          stream: _products.snapshots(),
+        body: FutureBuilder(
+            future: FirebaseFirestore.instance
+                .collection('Schedule')
+                .where('user_email', isEqualTo: email)
+                .get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
             if (streamSnapshot.hasData) {
               return ListView.builder(

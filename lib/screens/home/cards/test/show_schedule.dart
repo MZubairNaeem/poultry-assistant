@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -9,9 +10,19 @@ class ShowSchedule extends StatefulWidget {
 }
 
 class _ShowScheduleState extends State<ShowSchedule> {
-  final CollectionReference _products =
-  FirebaseFirestore.instance.collection('products');
-
+  final email = FirebaseAuth.instance.currentUser!.email;
+  //final CollectionReference _products = FirebaseFirestore.instance.collection('Schedule').where("user_email" isEqualTo: FirebaseAuth.instance.currentUser!.email).get();
+  @override
+  void initState() {
+    super.initState();
+    getSchedule();
+  }
+  getSchedule() async {
+    await FirebaseFirestore.instance
+        .collection('Schedule')
+        .where('user_email', isEqualTo: FirebaseAuth.instance.currentUser!.email)
+        .get();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +31,11 @@ class _ShowScheduleState extends State<ShowSchedule> {
           title: const Text('Coming Schedule'),
           centerTitle: true,
         ),
-        body: StreamBuilder(
-          stream: _products.snapshots(),
+        body: FutureBuilder(
+          future: FirebaseFirestore.instance
+              .collection('Schedule')
+              .where('user_email', isEqualTo: email)
+              .get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
             if (streamSnapshot.hasData) {
               return ListView.builder(
